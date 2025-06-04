@@ -28,6 +28,7 @@ class Solution(object):
 
         # key = tuple representing letter counts
         # value = list of words that match that letter pattern
+        # use defaultdict instead of {} because it automatically creates an empty list if a new key is added
         hashMap = defaultdict(list)
 
         for word in strs:
