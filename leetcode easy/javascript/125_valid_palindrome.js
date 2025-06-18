@@ -41,17 +41,21 @@ var isPalindrome = function(s) {
     return true;
 };
 
-/* Faster Solution (5 ms) */
+/* Solution #2: Convert str to array, split/reverse/join array, compare str (w/o non-alpha chars) to reversed str */
 /**
  * @param {string} s
  * @return {boolean}
  */
 var isPalindrome = function(s) {
-  s=s.toLowerCase().replaceAll(/[^a-zA-Z0-9]/g,'');
-  let snew = s.toLowerCase().replaceAll(/[^a-zA-Z0-9]/g,'').split('').reverse().join('');
-  if(snew === s){
-    return true
-  }else{
-    return false
-  }
+  // convert string to lowercase and remove all non-alpha chars
+    let newStr = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+    
+    // convert str to array, reverse array & join together to create reversed str
+    let reversedStr = newStr.split("").reverse().join("");
+
+    if (newStr === reversedStr) {
+        return true;
+    }
+
+    return false;
 };
