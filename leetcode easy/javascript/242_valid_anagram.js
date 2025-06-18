@@ -1,5 +1,4 @@
-/*
-Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+/* Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 
 Example 1:
 Input: s = "anagram", t = "nagaram"
@@ -7,9 +6,9 @@ Output: true
 
 Example 2:
 Input: s = "rat", t = "car"
-Output: false
-*/
+Output: false */
 
+/* Solution #1 */
 /**
  * @param {string} s
  * @param {string} t
@@ -45,3 +44,26 @@ var isAnagram = function(s, t) {
     }
     return true;
 };
+
+/* Solution #2 */
+function validAnagram(s, t) {
+    let countS = {};
+    let countT = {};
+
+    for (let i = 0; i < s.length; i++) {
+        countS[s[i]] = (countS[s[i]] || 0) + 1; 
+    }
+
+    for (let i = 0; i < t.length; i++) {
+        countT[t[i]] = (countT[t[i]] || 0) + 1; 
+    }
+
+    for (let letter in countS) {
+        if (countS[letter] !== countT[letter]) {
+            return false;
+        }
+    }
+    return true;
+};
+
+console.log(validAnagram("anagram", "nagaram"));
