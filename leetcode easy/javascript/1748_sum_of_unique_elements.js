@@ -43,3 +43,28 @@ var sumOfUnique = function(nums) {
 };
 
 console.log(sumOfUnique([1, 2, 3, 2]));
+
+
+/* Solution #2 */
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var sumOfUnique = function(nums) {
+    // create object (key: num | value: # times num appears)
+    let countNums = {};
+    let sum = 0;
+
+    // loop through array to get freq count of each number
+    for (let i = 0; i < nums.length; i++) {
+        countNums[nums[i]]= (countNums[nums[i]] || 0) + 1;
+    }
+
+    // if count (value) === 1, it's unique. add num (key) w/ that count to sum
+    for (let key in countNums) {
+        if (countNums[key] === 1) {
+            sum += Number(key);
+        }
+    }
+    return sum;
+};
